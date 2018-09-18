@@ -1,0 +1,26 @@
+{
+  "name": "sun-spot-analyser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "test": "npm run build && mocha './dist/**/*.spec.js'",
+    "start": "dist/index.js"
+  },
+  "author": "Yogender Kumar",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/cli-color": "^0.3.29",
+    "@types/cli-table2": "^0.2.1",
+    "@types/mocha": "^5.2.5",
+    "cli-color": "^1.3.0",
+    "cli-table2": "^0.2.0",
+    "colors": "^1.3.2",
+    "fs": "0.0.1-security",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "@types/node": "^10.10.1"
+  }
+}
