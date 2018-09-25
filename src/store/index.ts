@@ -1,31 +1,36 @@
-"use strict";
 /**
 * Binary Search Tree for SunSportAnalyser Adjacent list
 */
-Object.defineProperty(exports, "__esModule", { value: true });
+
+
 /**
 * Node of the tree
 * @param {Number} value of the node
 * @param {Object} object other values of the node
 */
-var Node = /** @class */ (function () {
-    function Node(value, object) {
-        this.left = null;
-        this.right = null;
+export class Node {
+
+    /**
+    * @member {Number|Object|Any}
+    */
+    value: number;
+    obj: object;
+    left: any = null;
+    right: any = null;
+
+    constructor(value: number, object: object) {
         this.value = value;
         this.obj = object;
     }
-    return Node;
-}());
-exports.Node = Node;
+}
+
 /**
-* Binary tree
+* Binary search tree
 */
-var Tree = /** @class */ (function () {
-    function Tree() {
-        this.root = null;
-        this.orderList = [];
-    }
+export class BinarySearchTree {
+    private root: any = null;
+    private orderList: any = [];
+
     /**
     * Inserts a node into the binary search tree.
     *
@@ -34,14 +39,17 @@ var Tree = /** @class */ (function () {
     * @param {Number} value Node value.
     * @param {Object} object other values of the node.
     */
-    Tree.prototype.insert = function (value, obj) {
-        var root = this.root;
+    public insert(value: number, obj: object): void {
+        let root = this.root;
+
         if (!root) {
             this.root = new Node(value, obj);
             return;
         }
-        var currentNode = root;
-        var newNode = new Node(value, obj);
+
+        let currentNode = root;
+        let newNode = new Node(value, obj);
+
         while (currentNode) {
             if (value < currentNode.value) {
                 if (!currentNode.left) {
@@ -49,8 +57,7 @@ var Tree = /** @class */ (function () {
                     break;
                 }
                 currentNode = currentNode.left;
-            }
-            else {
+            } else {
                 if (!currentNode.right) {
                     currentNode.right = newNode;
                     break;
@@ -58,18 +65,8 @@ var Tree = /** @class */ (function () {
                 currentNode = currentNode.right;
             }
         }
-    };
-    /**
-    * Get the list in DESC order
-    *
-    * @public
-    * @returns orderList in DESC order
-    */
-    Tree.prototype.sortDESC = function () {
-        this.orderList = [];
-        this.inorderDESC();
-        return this.orderList;
-    };
+    }
+
     /**
     * In-order traversal of the whole binary search tree.
     *
@@ -77,15 +74,24 @@ var Tree = /** @class */ (function () {
     * @method
     * @param {Node} current Node from which to start the traversal.
     */
-    Tree.prototype.inorderDESC = function (node) {
-        if (node === void 0) { node = this.root; }
+    private inorderDESC(node: any = this.root): any {
         if (!node) {
             return;
         }
         this.inorderDESC(node.right);
         this.orderList.push(node);
         this.inorderDESC(node.left);
-    };
-    return Tree;
-}());
-exports.Tree = Tree;
+    }
+
+    /**
+    * Get the list in DESC order
+    *
+    * @public
+    * @returns orderList in DESC order
+    */
+    public descendingSort(): any {
+        this.orderList = [];
+        this.inorderDESC();
+        return this.orderList;
+    }
+}

@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc --build",
-    "test": "npm run build && mocha './dist/**/*.spec.js'",
-    "start": "dist/index.js"
+    "test": "npm run build && mocha './dist/*.spec.js'",
+    "start": "mocha './dist/*.spec.js'"
   },
   "author": "Yogender Kumar",
   "license": "MIT",
